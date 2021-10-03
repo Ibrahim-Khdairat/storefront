@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+// Header Style 
+.header {
+    height: 70px;
+    background-color: lightgray;
+}
+
+.title {
+    text-decoration: none;
+    height: 70px;
+    line-height: 70px;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: black;
+}
+
+.pages{
+    text-decoration: none;
+    height: 70px;
+    line-height: 70px;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+
+.pages:last-child{
+    float: right;
+    margin-right: 80px;
+}
+
+//////////////////////////////////////////////////
+
+// Footer Style 
+
+.footer {
+    height: 70px;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.footer footer {
+    height: 70px;
+    line-height: 70px;
+}
+
+.footer a{
+ text-decoration: none;
+}
+
+/////////////////////////////////////////////////
+
+
+.link {
+  text-decoration: none;
+}
+
+// .productsDiv {
+//     display: flex;
+//     flex-wrap: wrap-reverse;
+// }
+
+.product {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.product image {
+    width: 345px;
+}
+
+// .products>* {
+//     flex: 1 1 160px;
+// }
