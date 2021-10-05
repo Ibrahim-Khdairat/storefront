@@ -55,7 +55,8 @@ let initialState = {
             imeage: 'https://images.thdstatic.com/productImages/35a1abed-11b8-4e9e-91d8-6449e09e9bb7/svn/fingerprint-resistant-stainless-steel-samsung-french-door-refrigerators-rf28t5001sr-64_300.jpg'
         }
 
-    ]
+    ],
+    activeProduct:[]
 }
 
 // here will add the reducer
@@ -76,8 +77,29 @@ const ReduceProducts = (state = initialState, action) => {
                 return product.category == payload ? product.category : null;
             })
             return { ...state, product };
-        case 'RESET':
-            return initialState;
+            case 'STOCKCOUNTER':
+
+                state.activeProduct = state.activeProduct.map((product) => {
+                    if (product.name === payload.name) {
+                        if (product.inventoryCount > 0) {
+                            product.inventoryCount = product.inventoryCount - 1;
+                        }
+                        return product;
+                    }
+                    return product;
+                });
+                return { ...state };
+            // this case to update inventory count aftter delete product from cart
+            case 'DELETE-FROM-CART':
+                state.activeProduct = state.activeProduct.map((product) => {
+                    if (product.name === payload.product.name) {
+                        product.inventoryCount = product.inventoryCount + 1;
+    
+                        return product;
+                    }
+                    return product;
+                });
+                return { ...state };
         default:
             return state;
     };
@@ -87,4 +109,18 @@ const ReduceProducts = (state = initialState, action) => {
 Create an action that will trigger when the active category is changed
 HINT: Multiple reducers can respond to the same actions
 */
+
+export const active = (name) => {
+    return {
+        type: 'ACTIVE',
+        payload: name
+    }
+}
+
+export const stockCounter = (name) => {
+    return {
+        type: 'STOCKCOUNTER',
+        payload: name
+    }
+}
 export default ReduceProducts;

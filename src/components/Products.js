@@ -9,17 +9,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { stockCounter } from '../store/Products';
 import { connect } from "react-redux";
+import { addToCart } from "../store/Cart";
 
 
 const Products = (props) => {
   return (
-    <div className = "productsDiv">
+    <div className="productsDiv">
       {props.products.map(ele => {
         if (props.activeCategory == ele.category) {
           return (
-            <div key={ele.name} className = "product">
+            <div key={ele.name} className="product">
               <Card sx={{ maxWidth: 345 }} style={{ marginLeft: '670px', display: 'flex', flexDirection: 'column' }}>
                 <CardMedia
                   component="img"
@@ -40,8 +41,15 @@ const Products = (props) => {
                 </CardContent>
                 <CardActions>
                   <Button size="small"> View</Button>
-                  <Button size="small"> Add to Cart</Button>
-                </CardActions>
+                  <Button size="small"
+                    onClick={() => {
+                      if (ele.inventoryCount) {
+                        props.addToCart(ele)
+                        props.stockCounter(ele)
+                      } else {
+                        alert("empty item");
+                      }
+                    }}>  Add to Cart</Button>                </CardActions>
               </Card>
             </div>
           )
@@ -56,4 +64,7 @@ const mapStateToProps = (state) => ({
   products: state.ReduceProducts.products,
   activeCategory: state.ReduceCategory.activeCategory
 })
-export default connect(mapStateToProps)(Products);
+
+const mapDispatchToProps = { stockCounter, addToCart }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
