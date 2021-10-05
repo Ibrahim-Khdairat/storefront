@@ -21,10 +21,11 @@ const Products = (props) => {
         if (props.activeCategory == ele.category) {
           return (
             <div key={ele.name} className="product">
-              <Card sx={{ maxWidth: 345 }} style={{ marginLeft: '670px', display: 'flex', flexDirection: 'column' }}>
+              <Card sx={{ maxWidth: 345 }} >
                 <CardMedia
                   component="img"
-                  width="345"
+                  width="245"
+                  height ="245"
                   image={ele.imeage}
                 />
                 <CardContent>
