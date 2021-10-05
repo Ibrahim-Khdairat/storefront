@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { active, reset } from '../store/Categories'
 
 const Categories = (props) => {
-    console.log(props.ReduceCategory);
+    // console.log(props.ReduceCategory);
     // 1. Shows a list of all categories
     // 2. Dispatches an action when one is clicked to “activate” it
     return (
