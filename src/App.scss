@@ -59,14 +59,14 @@ body {
   text-decoration: none;
 }
 
-// .productsDiv {
-//     display: flex;
-//     flex-wrap: wrap-reverse;
-// }
+.productsDiv {
+    display: flex;
+    flex-wrap:wrap;
+
+}
 
 .product {
-    display: flex;
-    flex-wrap: wrap-reverse;
+    margin: 10px;
 }
 
 .product image {
